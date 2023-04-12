@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import {ZipReader, BlobReader} from "@zip.js/zip.js";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type MyState = {
+    selectedFile: File | null;
+    text: string;
+};
+
+export default class App extends React.Component<{}, MyState> {
+    state: MyState = {
+        selectedFile: null,
+        text: "",
+    };
+
+    async openZipFile(file: File | null) {
+        if (!file)
+            return;
+        let entries = await (new ZipReader(new BlobReader(file))).getEntries();
+        if (entries && entries.length) {
+            entries[2].getData()
+        }
+    }
+
+    // openZipFile(file: File | null) {
+    //     if(!file)
+    //         return;
+    //     let reader = new FileReader();
+    //     reader.readAsText(file);
+    //     reader.onloadend = (e) => { // @ts-ignore
+    //         this.setState((state, props) => ({text: e.target!.result!}))};
+    // }
+
+    render() {
+        return (
+            <div className="App">
+                <form>
+                    <input
+                        type="file"
+                        onChange={(e) => {
+                            this.openZipFile(e.target.files![0]);
+                        }}
+                        accept="application/zip"
+                    />
+                </form>
+                <p>space {this.state.text}</p>
+            </div>
+        );
+    }
 }
-
-export default App;
