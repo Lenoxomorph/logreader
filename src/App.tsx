@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import {ZipReader, BlobReader} from "@zip.js/zip.js";
+import { ZipReader, BlobReader, BlobWriter } from "@zip.js/zip.js";
 
 type MyState = {
     selectedFile: File | null;
@@ -18,7 +18,9 @@ export default class App extends React.Component<{}, MyState> {
             return;
         let entries = await (new ZipReader(new BlobReader(file))).getEntries();
         if (entries && entries.length) {
-            entries[2].getData()
+            // @ts-ignore
+            const data = await entries[2].getData(new BlobWriter());
+            alert(data.text)
         }
     }
 
