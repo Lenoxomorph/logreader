@@ -4,7 +4,7 @@ import './FileInput.css';
 
 export default function FileInput() {
     const [text, setText] = useState(<p>File Not Uploaded</p>);
-    const regex = /(\d+),([\d:.]+) \[(\w*) *] (.*)/gm;
+    const regex = /(\d{6}),([\d:.]+) \[(\w*) *] (.*)/gm;
 
     const openZipFile = async (file: File | null) => {
         if (!file)
@@ -14,20 +14,32 @@ export default function FileInput() {
         let logs = await Promise.all([entries[5], entries[7], entries[10], entries[15]].map(async log => {
             return await log.getData!(new TextWriter());
         }));
+        let parsedLogs: RegExpExecArray[][] = [];
+        let indexes = [0, 0, 0, 0];
+
+        let m;
+        for (let i = 0; i < logs.length; i++) {
+            parsedLogs[i] = []
+            while ((m = regex.exec(logs[i])) !== null) {
+                parsedLogs[i].push(m)
+            }
+        }
+
+
 
         let returnArr: JSX.Element[] = [];
 
-        let strArray = logs.map(log => regex.exec(log));
+        let strArray = parsedLogs.map(log => log[0]);
         let tempStr: string | null = "";
         while (tempStr !== null) {
             tempStr = null;
             let k = -1;
             for (let i = 0; i < strArray.length; i++) {
                 let line = strArray[i];
-                if (line !== null) {
-                    // console.log("Line Not Null")
+                // console.log("i: " + i);
+                if (line !== undefined) {
+                    // console.log("i: " + i + "Value" + line[0])
                     if (tempStr == null) {
-                        // console.log("Temp String Null")
                         tempStr = line[0];
                         k = i;
                     } else {
@@ -42,7 +54,9 @@ export default function FileInput() {
             }
             // alert(tempStr);
             if (k > -1) {
-                strArray[k] = regex.exec(logs[k]);
+                indexes[k]++;
+                strArray[k] = parsedLogs[k][indexes[k]]
+                console.log("Str ARR: " + strArray[k]);
             }
             if (tempStr !== null) {
                 console.log(tempStr)
@@ -86,5 +100,5 @@ export default function FileInput() {
                 }}
                 accept="application/zip"/>
         </form>
-        <p>{text}</p></>;
+        {text}</>;
 }
