@@ -2,9 +2,15 @@ import React, {useState} from "react";
 import {ZipReader, BlobReader, BlobWriter, TextWriter} from "@zip.js/zip.js";
 import './FileInput.css';
 
-export default function FileInput() {
+type MyState = {
+    test: string
+};
+
+export default function FileInput({test}: MyState) {
     const [text, setText] = useState(<p>File Not Uploaded</p>);
     const regex = /(\d{6}),([\d:.]+) \[(\w*) *] (.*)/gm;
+
+    console.log(test);
 
     const openZipFile = async (file: File | null) => {
         if (!file)
@@ -19,12 +25,11 @@ export default function FileInput() {
 
         let m;
         for (let i = 0; i < logs.length; i++) {
-            parsedLogs[i] = []
+            parsedLogs[i] = [];
             while ((m = regex.exec(logs[i])) !== null) {
-                parsedLogs[i].push(m)
+                parsedLogs[i].push(m);
             }
         }
-
 
 
         let returnArr: JSX.Element[] = [];
@@ -55,26 +60,28 @@ export default function FileInput() {
             // alert(tempStr);
             if (k > -1) {
                 indexes[k]++;
-                strArray[k] = parsedLogs[k][indexes[k]]
+                strArray[k] = parsedLogs[k][indexes[k]];
                 console.log("Str ARR: " + strArray[k]);
             }
             if (tempStr !== null) {
-                console.log(tempStr)
+                console.log(tempStr);
                 let color;
-                switch(k) {
+                switch (k) {
                     case 0:
-                        color = "green"
+                        color = "green";
                         break;
                     case 1:
-                        color = "grey"
+                        color = "grey";
                         break;
                     case 2:
-                        color = "blue"
+                        color = "blue";
                         break;
                     default:
-                        color = "red"
+                        color = "red";
                 }
-                returnArr.push(<p><mark className={color}>{tempStr}</mark></p>)
+                returnArr.push(<p>
+                    <mark className={color}>{tempStr}</mark>
+                </p>);
             }
         }
         setText(<>{returnArr}</>);
@@ -99,6 +106,6 @@ export default function FileInput() {
                     openZipFile(e.target.files![0]);
                 }}
                 accept="application/zip"/>
-        </form>
+        </form>{test}
         {text}</>;
 }

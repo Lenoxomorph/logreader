@@ -5,6 +5,6 @@ import FileInput from "./FileInput";
 
 export default function App() {
     return (
-        <div className="App"><FileInput/></div>
+        <div className="App"><FileInput  test={"test2"}/></div>
     );
 }
