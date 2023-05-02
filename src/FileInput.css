@@ -13,7 +13,11 @@ mark.green {
     background: none;
 }
 
-mark.grey {
+mark.purple {
     color: #933ddc;
     background: none;
+}
+
+p {
+    text-align: left;
 }
