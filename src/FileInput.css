@@ -1,0 +1,23 @@
+mark.red {
+    color: #c52323;
+    background: none;
+}
+
+mark.blue {
+    color: #2121c4;
+    background: none;
+}
+
+mark.green {
+    color: #23c023;
+    background: none;
+}
+
+mark.purple {
+    color: #933ddc;
+    background: none;
+}
+
+p {
+    text-align: left;
+}
