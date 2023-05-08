@@ -3,7 +3,7 @@ import './Styles/FileInput.css';
 import {BlobReader, TextWriter, ZipReader} from "@zip.js/zip.js";
 import FileString from "./Structures/FileString";
 
-const defaultActiveFiles = ["var/log/persimmon/persimmon.log"];
+const defaultActiveFiles = ["persimmon.log"];
 
 type Props = {
     updateFileStrings: (val: FileString[]) => void;
@@ -20,7 +20,7 @@ export default function FileInput({updateFileStrings}: Props) {
         let returnList: FileString[] = [];
         for (let i = 0; i < entries.length; i++) {
             returnList[i] = {
-                filename: entries[i].filename,
+                filename: entries[i].filename.replace("var/log/persimmon/", ""),
                 content: await entries[i].getData!(new TextWriter()),
                 isActive: false
             };

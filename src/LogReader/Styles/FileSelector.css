@@ -1,9 +1,10 @@
-.FileList {
-
-}
-
 ul.FileList {
     list-style: none;
+    padding-inline-start: 0;
+}
+
+.FileList li {
+    text-align: left;
 }
 
 .active {

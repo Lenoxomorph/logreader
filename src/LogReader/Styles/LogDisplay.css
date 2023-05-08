@@ -1,7 +1,3 @@
-.LogDisplay p {
-    text-align: left;
-}
-
 td.red {
     color: #c52323;
     background: none;
@@ -20,4 +16,9 @@ td.green {
 td.purple {
     color: #933ddc;
     background: none;
+}
+
+table.LogDisplay {
+    border-collapse: collapse;
+    width: 100%;
 }

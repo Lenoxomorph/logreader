@@ -10,12 +10,12 @@ export default function LogDisplay({fileStrings}: Props) {
     const regex = /(\d{6}),([\d:.]+) \[(\w*) *] (.*)/gm;
 
     const findColor = (fileName: string) => {
-        if (fileName.startsWith("var/log/persimmon/persimmonR"))
+        if (fileName.startsWith("persimmonR"))
             return "red";
-        if (fileName.startsWith("var/log/persimmon/persimmonG")) {
+        if (fileName.startsWith("persimmonG")) {
             return "green";
         }
-        if (fileName.startsWith("var/log/persimmon/persimmonB")) {
+        if (fileName.startsWith("persimmonB")) {
             return "blue";
         }
         return "purple";
@@ -62,7 +62,7 @@ export default function LogDisplay({fileStrings}: Props) {
         </tr>);
     };
 
-    return <table>
+    return <table className="LogDisplay">
         <thead>
         <tr>
             <th>Date</th>

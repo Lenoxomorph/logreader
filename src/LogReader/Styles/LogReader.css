@@ -1,19 +1,14 @@
 .App {
-    text-align: center;
+    display: flex;
+    flex-flow: row;
 }
 
 .FileInputPanel {
-    width: calc(30% - 1px);
-    float: left;
+    width: fit-content;
     height: 100%;
-    overflow: auto;
-    position: relative;
+    margin: 0 20px;
 }
 
-.LogDisplay {
-    width: calc(70% - 1px);
-    float: right;
+.LogDisplayPanel {
     height: 100%;
-    overflow: auto;
-    position: relative;
 }
