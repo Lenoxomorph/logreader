@@ -1,0 +1,19 @@
+.App {
+    text-align: center;
+}
+
+.FileInputPanel {
+    width: calc(30% - 1px);
+    float: left;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}
+
+.LogDisplay {
+    width: calc(70% - 1px);
+    float: right;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}

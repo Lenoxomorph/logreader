@@ -1,23 +1,23 @@
-mark.red {
+.LogDisplay p {
+    text-align: left;
+}
+
+td.red {
     color: #c52323;
     background: none;
 }
 
-mark.blue {
+td.blue {
     color: #2121c4;
     background: none;
 }
 
-mark.green {
+td.green {
     color: #23c023;
     background: none;
 }
 
-mark.purple {
+td.purple {
     color: #933ddc;
     background: none;
-}
-
-p {
-    text-align: left;
 }

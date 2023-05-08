@@ -1,0 +1,17 @@
+.FileList {
+
+}
+
+ul.FileList {
+    list-style: none;
+}
+
+.active {
+    color: #000000;
+    background: #165d13;
+}
+
+.inactive {
+    text-decoration: line-through;
+    color: #797979;
+}
