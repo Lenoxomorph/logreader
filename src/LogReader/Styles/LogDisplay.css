@@ -18,7 +18,12 @@ td.purple {
     background: none;
 }
 
+td {
+    white-space: nowrap;
+}
+
 table.LogDisplay {
     border-collapse: collapse;
+    table-layout: fixed;
     width: 100%;
 }
