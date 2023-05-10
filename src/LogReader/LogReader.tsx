@@ -13,7 +13,10 @@ export default function LogReader() {
         <div className="App">
             <div className="FileInputPanel">
                 <FileInput updateFileStrings={updateFileStrings}/>
-                <FileSelector fileStrings={fileStrings} updateFileStrings={updateFileStrings}/>
+                <div className="FileListContainer">
+                    <FileSelector fileStrings={fileStrings} updateFileStrings={updateFileStrings}/>
+                </div>
+                <p>test</p>
             </div>
             <div className="LogDisplayPanel">
                 <LogDisplay fileStrings={fileStrings}/>

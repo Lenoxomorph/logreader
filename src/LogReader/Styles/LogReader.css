@@ -1,14 +1,41 @@
 .App {
-    display: flex;
-    flex-flow: row;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-areas: "sidebar content";
 }
 
 .FileInputPanel {
-    width: fit-content;
-    height: 100%;
-    margin: 0 20px;
+    grid-area: sidebar;
+    position: relative;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .LogDisplayPanel {
-    height: 100%;
+    grid-area: content;
+    position: relative;
+    height: calc(100vh - 85px);
+    overflow: auto;
+}
+
+.red {
+    color: #a41010;
+    background: none;
+}
+
+.blue {
+    color: #1616a8;
+    background: none;
+}
+
+.green {
+    color: #008c00;
+    background: none;
+}
+
+.baseColor {
+    color: #5a1396;
+    background: none;
 }

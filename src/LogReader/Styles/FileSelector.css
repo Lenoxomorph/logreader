@@ -1,6 +1,12 @@
-ul.FileList {
+.FileListContainer {
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.FileList {
     list-style: none;
     padding-inline-start: 0;
+    margin: 10px 20px;
 }
 
 .FileList li {

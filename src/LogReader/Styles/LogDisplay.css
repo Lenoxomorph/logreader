@@ -1,29 +1,22 @@
-td.red {
-    color: #c52323;
-    background: none;
-}
-
-td.blue {
-    color: #2121c4;
-    background: none;
-}
-
-td.green {
-    color: #23c023;
-    background: none;
-}
-
-td.purple {
-    color: #933ddc;
-    background: none;
-}
-
-td {
+th, td {
     white-space: nowrap;
+    text-align: left;
+}
+
+th {
+    min-width: 10px;
+}
+
+.date {
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.tag {
+    text-align: center;
 }
 
 table.LogDisplay {
     border-collapse: collapse;
-    table-layout: fixed;
-    width: 100%;
+    table-layout: auto;
 }

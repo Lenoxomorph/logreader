@@ -8,6 +8,7 @@ type Props = {
 
 export default function LogDisplay({fileStrings}: Props) {
     const regex = /(\d{6}),([\d:.]+) \[(\w*) *] (.*)/gm;
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     const findColor = (fileName: string) => {
         if (fileName.startsWith("persimmonR"))
@@ -18,7 +19,15 @@ export default function LogDisplay({fileStrings}: Props) {
         if (fileName.startsWith("persimmonB")) {
             return "blue";
         }
-        return "purple";
+        return "baseColor";
+    };
+
+    const displayDate = (dateString: string) => {
+        let year = dateString.substring(0, 2);
+        let month = dateString.substring(2, 4);
+        let day = dateString.substring(4, 6);
+
+        return `${months[Number(month) - 1]} ${Number(day)} ${year}`;
     };
 
     const compileList = (fileStrings: FileString[]): JSX.Element[] => {
@@ -55,9 +64,9 @@ export default function LogDisplay({fileStrings}: Props) {
         }
 
         return sortedMatches.map(match => <tr>
-            <td>{match[1]}</td>
+            <td className="date">{displayDate(match[1])}</td>
             <td>{match[2]}</td>
-            <td>{match[3]}</td>
+            <td className="tag">{match[3]}</td>
             <td className={match[5]}>{match[4]}</td>
         </tr>);
     };
@@ -65,9 +74,9 @@ export default function LogDisplay({fileStrings}: Props) {
     return <table className="LogDisplay">
         <thead>
         <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Tag</th>
+            <th style={{minWidth: "90px"}}>Date</th>
+            <th style={{minWidth: "90px"}}>Time</th>
+            <th className="tag" style={{minWidth: "70px"}}>Tag</th>
             <th>Content</th>
         </tr>
         </thead>
