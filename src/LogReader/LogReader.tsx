@@ -16,7 +16,6 @@ export default function LogReader() {
                 <div className="FileListContainer">
                     <FileSelector fileStrings={fileStrings} updateFileStrings={updateFileStrings}/>
                 </div>
-                <p>test</p>
             </div>
             <div className="LogDisplayPanel">
                 <LogDisplay fileStrings={fileStrings}/>

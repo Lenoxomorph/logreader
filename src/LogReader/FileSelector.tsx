@@ -19,11 +19,23 @@ export default function FileSelector({fileStrings, updateFileStrings}: Props) {
         updateFileStrings(newItems);
     };
 
+    const findColor = (fileName: string) => {
+        if (fileName.startsWith("persimmonR"))
+            return "red";
+        if (fileName.startsWith("persimmonG")) {
+            return "green";
+        }
+        if (fileName.startsWith("persimmonB")) {
+            return "blue";
+        }
+        return "baseColor";
+    };
+
     if (!fileStrings.length)
         return <p>{"File Not Uploaded"}</p>;
     return <ul className="FileList">
         {fileStrings.map(fileString => (
-            <li className={fileString.isActive ? "active" : "inactive"}
+            <li className={`${fileString.isActive ? "" : "inactive"} ${findColor(fileString.filename)}`}
                 onClick={() => handleFileClick(fileString.filename)}>
                 {fileString.filename}
             </li>))}
