@@ -19,7 +19,7 @@ export default function LogReader() {
                 </div>
             </div>
             <div className="LogDisplayPanel">
-                <LogDisplay fileStrings={fileStrings}/>
+                <LogDisplay fileStrings={fileStrings} configTags={config.tags} configSearch={config.search}/>
             </div>
         </div>
     );

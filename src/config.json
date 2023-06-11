@@ -1,13 +1,27 @@
 {
-  "files" : {
-    "tcpHost.log":  "defaultColor",
+  "files": {
+    "tcpHost.log": "defaultColor",
     "tcpELink.log": "defaultColor",
-    "serialHost.log":  "defaultColor",
+    "serialHost.log": "defaultColor",
     "serialTP.log": "defaultColor",
-
-    "persimmon.log":  "defaultColor",
+    "persimmon.log": "defaultColor",
     "persimmonB.log": "blue",
-    "persimmonG.log":  "green",
+    "persimmonG.log": "green",
     "persimmonR.log": "red"
+  },
+  "tags": {
+    "INFO": "INFO,#233C54",
+    "WARN": "WARN,#6D6F08",
+    "ERROR": "ERROR,#855B0B",
+    "default": "default,#52B8CE"
+  },
+  "search": {
+    "FATAL": "FATAL,#A8180F",
+    "_ERR": "_ERR,#A8180F",
+    "HWFAILURE": "HWFAIL,#A8180F",
+    "TEACHPENDANT": "TP,@CE8E11",
+    "SAVE": "SAVE,#4886A8",
+    "Control Loop Online": "CL0n,#608515",
+    "Control Loop Offline": "CL0ff,#608515"
   }
 }
