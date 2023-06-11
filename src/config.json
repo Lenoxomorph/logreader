@@ -1,0 +1,13 @@
+{
+  "files" : {
+    "tcpHost.log":  "defaultColor",
+    "tcpELink.log": "defaultColor",
+    "serialHost.log":  "defaultColor",
+    "serialTP.log": "defaultColor",
+
+    "persimmon.log":  "defaultColor",
+    "persimmonB.log": "blue",
+    "persimmonG.log":  "green",
+    "persimmonR.log": "red"
+  }
+}

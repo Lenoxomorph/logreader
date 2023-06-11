@@ -7,20 +7,8 @@ type Props = {
 };
 
 export default function LogDisplay({fileStrings}: Props) {
-    const regex = /(\d{6}),([\d:.]+) \[(\w*) *] (.*)/gm;
+    const regex = /(\d{6}),([\d:.]+)(?: \[(\w*) *])? (.*)/gm;
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-    const findColor = (fileName: string) => {
-        if (fileName.startsWith("persimmonR"))
-            return "red";
-        if (fileName.startsWith("persimmonG")) {
-            return "green";
-        }
-        if (fileName.startsWith("persimmonB")) {
-            return "blue";
-        }
-        return "baseColor";
-    };
 
     const displayDate = (dateString: string) => {
         let year = dateString.substring(0, 2);
@@ -34,7 +22,7 @@ export default function LogDisplay({fileStrings}: Props) {
         if (!fileStrings.length)
             return [<></>];
         let activeFileStrings = fileStrings.filter(fileString => fileString.isActive);
-        let colorTable = activeFileStrings.map(fileString => findColor(fileString.filename));
+        let colorTable = activeFileStrings.map(fileString => fileString.color);
         let matchers = activeFileStrings.map(fileString => fileString.content.matchAll(regex));
 
         let sortedMatches: RegExpMatchArray[] = [];

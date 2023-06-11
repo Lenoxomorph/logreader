@@ -5,6 +5,7 @@ import FileInput from "./FileInput";
 import LogDisplay from "./LogDisplay";
 import FileString from "./Structures/FileString";
 import FileSelector from "./FileSelector";
+import config from '../config.json';
 
 export default function LogReader() {
     const [fileStrings, updateFileStrings] = useState<FileString[]>([]);
@@ -12,7 +13,7 @@ export default function LogReader() {
     return (
         <div className="App">
             <div className="FileInputPanel">
-                <FileInput updateFileStrings={updateFileStrings}/>
+                <FileInput updateFileStrings={updateFileStrings} configFiles={config.files}/>
                 <div className="FileListContainer">
                     <FileSelector fileStrings={fileStrings} updateFileStrings={updateFileStrings}/>
                 </div>
