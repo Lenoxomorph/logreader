@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './Styles/LogReader.css';
 
 import FileInput from "./FileInput";
@@ -9,9 +9,15 @@ import config from '../config.json';
 import ErrorLog from "./Structures/ErrorLog";
 import ErrorList from "./ErrorList";
 
-export default function LogReader() {
+type Props = {
+    hideLoader: () => void;
+};
+
+export default function LogReader({hideLoader}: Props) {
     const [fileStrings, updateFileStrings] = useState<FileString[]>([]);
     const [errorList, updateErrorList] = useState<ErrorLog[]>([]);
+
+    useEffect(hideLoader, [hideLoader])
 
     return (
         <div className="App">

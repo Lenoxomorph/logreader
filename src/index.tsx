@@ -4,12 +4,16 @@ import './index.css';
 import LogReader from './LogReader/LogReader';
 import reportWebVitals from './reportWebVitals';
 
+const loader = document.querySelector('.loader');
+
+const hideLoader = () => loader!.classList.add('loader--hide');
+
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <LogReader/>
+        <LogReader hideLoader={hideLoader}/>
     </React.StrictMode>
 );
 
