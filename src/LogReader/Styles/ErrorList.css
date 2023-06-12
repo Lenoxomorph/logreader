@@ -1,0 +1,13 @@
+th, td {
+    white-space: nowrap;
+    text-align: left;
+}
+
+th {
+    min-width: 10px;
+}
+
+table.ErrorList {
+    border-collapse: collapse;
+    table-layout: auto;
+}

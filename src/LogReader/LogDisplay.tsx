@@ -33,6 +33,7 @@ export default function LogDisplay({fileStrings, configTags, configSearch, error
         } else {
             tagColor = [match[3], configTags.default];
         }
+        console.log("howdy")
 
         let key = Object.keys(configSearch).find(searchKey => (match[4].concat(match[3] ? match[3] : "")).includes(searchKey));
         if (key) {
@@ -40,7 +41,7 @@ export default function LogDisplay({fileStrings, configTags, configSearch, error
             let reference: React.RefObject<HTMLTableDataCellElement> = React.createRef()
             errorList.push({
                 date: match[1],
-                tag: tagColor[0],
+                tag: <td className="tag" style={{backgroundColor: tagColor[1]}}>{tagColor[0]}</td>,
                 ref: reference
             })
             updateErrorList(errorList)
@@ -48,7 +49,6 @@ export default function LogDisplay({fileStrings, configTags, configSearch, error
         }
 
         //Search the Search keys to add their colors
-        //Eventually, add jump points to the keys
 
         //let key = Object.keys(configFiles).find(configFile => entry.filename.startsWith(configFile))
 

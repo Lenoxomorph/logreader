@@ -24,6 +24,7 @@
     grid-area: rightbar;
     position: relative;
     height: calc(100vh - 85px);
+    width: 200px;
     overflow: auto;
     text-align: center;
 

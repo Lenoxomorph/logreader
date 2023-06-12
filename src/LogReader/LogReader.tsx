@@ -24,7 +24,7 @@ export default function LogReader({hideLoader}: Props) {
             <div className="FileInputPanel">
                 <FileInput updateFileStrings={updateFileStrings} configFiles={config.files}/>
                 <div className="FileListContainer">
-                    <FileSelector fileStrings={fileStrings} updateFileStrings={updateFileStrings}/>
+                    <FileSelector fileStrings={fileStrings} updateFileStrings={updateFileStrings} updateErrorList={updateErrorList}/>
                 </div>
             </div>
             <div className="LogDisplayPanel">
