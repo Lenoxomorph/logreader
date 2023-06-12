@@ -12,14 +12,14 @@
   "tags": {
     "INFO": "INFO,#67839E",
     "WARN": "WARN,#6D6F08",
-    "ERROR": "ERROR,#d74e4e",
+    "ERROR": "ERROR,#9F4000",
     "default": "default,#52B8CE"
   },
   "search": {
-    "FATAL": "FATAL,#A8180F",
-    "_ERR": "_ERR,#A8180F",
-    "HWFAILURE": "HWFAIL,#A8180F",
-    "TEACHPENDANT": "TP,@CE8E11",
+    "FATAL": "FATAL,#D2180F",
+    "_ERR": "_ERR,#D2180F",
+    "HWFAILURE": "HWFAIL,#D2180F",
+    "TEACHPENDANT": "TP,#CE8E11",
     "SAVE": "SAVE,#4886A8",
     "Control Loop Online": "CL0n,#608515",
     "Control Loop Offline": "CL0ff,#608515"

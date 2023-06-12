@@ -26,13 +26,12 @@ export default function LogDisplay({fileStrings, configTags, configSearch}: Prop
         let tag = configTags[match[3]];
 
         if (tag) {
-            console.log(tag)
             tagColor = tag.split(',');
         } else {
             tagColor = [match[3], configTags.default];
         }
 
-        let key = Object.keys(configSearch).find(searchKey => (match[3].concat(match[4])).includes(searchKey));
+        let key = Object.keys(configSearch).find(searchKey => (match[4].concat(match[3] ? match[3] : "")).includes(searchKey));
         if (key) {
             tagColor = configSearch[key].split(',');
         }
