@@ -10,9 +10,9 @@
     "persimmonR.log": "red"
   },
   "tags": {
-    "INFO": "INFO,#233C54",
+    "INFO": "INFO,#67839E",
     "WARN": "WARN,#6D6F08",
-    "ERROR": "ERROR,#855B0B",
+    "ERROR": "ERROR,#d74e4e",
     "default": "default,#52B8CE"
   },
   "search": {
