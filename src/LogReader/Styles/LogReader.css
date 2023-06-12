@@ -1,7 +1,7 @@
 .App {
     display: grid;
     grid-template-columns: 300px 1fr;
-    grid-template-areas: "sidebar content";
+    grid-template-areas: "sidebar content rightbar";
 }
 
 .FileInputPanel {
@@ -18,6 +18,17 @@
     position: relative;
     height: calc(100vh - 85px);
     overflow: auto;
+}
+
+.ErrorListPanel {
+    grid-area: rightbar;
+    position: relative;
+    height: calc(100vh - 85px);
+    overflow: auto;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .red {

@@ -2,14 +2,17 @@ import React from "react";
 import './Styles/LogDisplay.css';
 import FileString from "./Structures/FileString";
 import Dictionary from "./Structures/Dictionary";
+import ErrorLog from "./Structures/ErrorLog";
 
 type Props = {
     fileStrings: FileString[];
     configTags: Dictionary<string>;
     configSearch: Dictionary<string>;
+    errorList: ErrorLog[];
+    updateErrorList: (val: ErrorLog[]) => void;
 };
 
-export default function LogDisplay({fileStrings, configTags, configSearch}: Props) {
+export default function LogDisplay({fileStrings, configTags, configSearch, errorList, updateErrorList}: Props) {
     const regex = /(\d{6}),([\d:.]+)(?: \[(\w*) *])? (.*)/gm;
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -34,6 +37,14 @@ export default function LogDisplay({fileStrings, configTags, configSearch}: Prop
         let key = Object.keys(configSearch).find(searchKey => (match[4].concat(match[3] ? match[3] : "")).includes(searchKey));
         if (key) {
             tagColor = configSearch[key].split(',');
+            let reference: React.RefObject<HTMLTableDataCellElement> = React.createRef()
+            errorList.push({
+                date: match[1],
+                tag: tagColor[0],
+                ref: reference
+            })
+            updateErrorList(errorList)
+            return <td className="tag" ref={reference} style={{backgroundColor: tagColor[1]}}>{tagColor[0]}</td>;
         }
 
         //Search the Search keys to add their colors
