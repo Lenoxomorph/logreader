@@ -17,6 +17,13 @@ export default function ErrorList({errorList}: Props) {
         return `${months[Number(month) - 1]} ${Number(day)} ${year}`;
     };
 
+    const tableScroll = (id: number) => {
+        const row = document.getElementById(id.toString());
+        if (row) {
+            row.scrollIntoView();
+        }
+    }
+
     return <table className="ErrorList">
         <thead>
         <tr>
@@ -24,7 +31,7 @@ export default function ErrorList({errorList}: Props) {
             <th style={{minWidth: "90px"}}>Tag</th>
         </tr>
         </thead>
-        <tbody>{errorList.map(error => <tr>
+        <tbody>{errorList.map(error => <tr onClick={() => tableScroll(error.id)}>
             <td className="date">{displayDate(error.date)}</td>
             {error.tag}
         </tr>)}</tbody>

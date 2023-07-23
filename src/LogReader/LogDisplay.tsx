@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './Styles/LogDisplay.css';
 import FileString from "./Structures/FileString";
 import Dictionary from "./Structures/Dictionary";
@@ -15,6 +15,7 @@ type Props = {
 export default function LogDisplay({fileStrings, configTags, configSearch, errorList, updateErrorList}: Props) {
     const regex = /(\d{6}),([\d:.]+)(?: \[(\w*) *])? (.*)/gm;
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let nextID = 0;
 
     const displayDate = (dateString: string) => {
         let year = dateString.substring(0, 2);
@@ -33,19 +34,18 @@ export default function LogDisplay({fileStrings, configTags, configSearch, error
         } else {
             tagColor = [match[3], configTags.default];
         }
-        console.log("howdy")
 
         let key = Object.keys(configSearch).find(searchKey => (match[4].concat(match[3] ? match[3] : "")).includes(searchKey));
         if (key) {
             tagColor = configSearch[key].split(',');
-            let reference: React.RefObject<HTMLTableDataCellElement> = React.createRef()
+            nextID++;
             errorList.push({
                 date: match[1],
                 tag: <td className="tag" style={{backgroundColor: tagColor[1]}}>{tagColor[0]}</td>,
-                ref: reference
+                id: nextID
             })
             updateErrorList(errorList)
-            return <td className="tag" ref={reference} style={{backgroundColor: tagColor[1]}}>{tagColor[0]}</td>;
+            return <td className="tag" style={{backgroundColor: tagColor[1]}} id={nextID.toString()}>{tagColor[0]}</td>;
         }
 
         //Search the Search keys to add their colors
